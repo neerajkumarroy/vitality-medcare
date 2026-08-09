@@ -11,7 +11,7 @@ import {
 
 import "./PatientLogin.css";
 
-const API_URL = import.meta.env.VITE_API_URL;
+const API_URL = "https://vitality-backend-2mr4.onrender.com";
 
 const PatientLogin = () => {
   const navigate = useNavigate();

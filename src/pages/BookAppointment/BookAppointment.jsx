@@ -44,7 +44,7 @@ const timeSlots = [
   "06:00 PM",
 ];
 
-const API_URL = "https://vitality-backend-2mr4.onrender.com";
+const API_URL = "https://vitality-backend-2mr4.onrender.com"; //add atls uri
 
 const BookAppointment = () => {
   const [selectedDoctor, setSelectedDoctor] = useState("");
