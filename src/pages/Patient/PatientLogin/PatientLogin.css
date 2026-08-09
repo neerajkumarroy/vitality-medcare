@@ -1,0 +1,847 @@
+/* =====================================================
+   PAGE
+===================================================== */
+
+.patient-auth-page {
+  min-height: calc(100vh - 77px);
+
+  background:
+    radial-gradient(
+      circle at 8% 12%,
+      rgba(22, 129, 124, 0.09),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 92% 88%,
+      rgba(22, 129, 124, 0.06),
+      transparent 34%
+    ),
+    #f7faf9;
+
+  color: #263b39;
+
+  position: relative;
+
+  overflow: hidden;
+}
+
+/* subtle decorative ring in the background — purely visual */
+
+.patient-auth-page::before {
+  content: "";
+
+  position: absolute;
+
+  top: -120px;
+  right: -120px;
+
+  width: 420px;
+  height: 420px;
+
+  border-radius: 50%;
+
+  background: radial-gradient(
+    circle,
+    rgba(22, 129, 124, 0.08),
+    transparent 70%
+  );
+
+  pointer-events: none;
+}
+
+.patient-auth-page::after {
+  content: "";
+
+  position: absolute;
+
+  bottom: -140px;
+  left: -140px;
+
+  width: 380px;
+  height: 380px;
+
+  border-radius: 50%;
+
+  background: radial-gradient(
+    circle,
+    rgba(22, 129, 124, 0.06),
+    transparent 70%
+  );
+
+  pointer-events: none;
+}
+
+.patient-auth-section {
+  width: min(1160px, calc(100% - 40px));
+
+  min-height: calc(100vh - 77px);
+
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: minmax(0, 600px) 440px;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 300px;
+
+  padding: 70px 0;
+
+  position: relative;
+  z-index: 1;
+}
+
+/* =====================================================
+   LEFT CONTENT &
+===================================================== */
+
+.patient-auth-content {
+  max-width: 600px;
+}
+
+.patient-auth-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+
+  padding: 7px 12px;
+
+  border: 1px solid #d9ebe8;
+  border-radius: 30px;
+
+  background: #edf8f6;
+  color: #16817c;
+
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+
+  box-shadow: 0 4px 12px rgba(22, 129, 124, 0.08);
+}
+
+.patient-auth-content h1 {
+  margin: 22px 0 17px;
+
+  color: #203b38;
+
+  font-size: clamp(40px, 5vw, 62px);
+  line-height: 1.03;
+  font-weight: 700;
+  letter-spacing: -2.5px;
+}
+
+.patient-auth-content h1 span {
+  display: block;
+
+  margin-top: 7px;
+
+  background: linear-gradient(100deg, #16817c 0%, #1fa39c 100%);
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  color: transparent;
+}
+
+.patient-auth-content > p {
+  max-width: 540px;
+
+  margin: 0;
+
+  color: #71817f;
+
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+/* =====================================================
+   FEATURES
+===================================================== */
+
+.patient-auth-features {
+  display: flex;
+  flex-direction: column;
+
+  gap: 15px;
+
+  margin-top: 38px;
+}
+
+.patient-auth-feature {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+
+  padding: 8px;
+
+  border-radius: 14px;
+
+  transition: background 0.25s ease;
+}
+
+.patient-auth-feature:hover {
+  background: rgba(255, 255, 255, 0.65);
+}
+
+.patient-feature-icon {
+  width: 43px;
+  height: 43px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border: 1px solid #dcecea;
+  border-radius: 12px;
+
+  background: #ffffff;
+  color: #16817c;
+
+  box-shadow: 0 5px 16px rgba(26, 65, 62, 0.05);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease,
+    color 0.25s ease;
+}
+
+.patient-auth-feature:hover .patient-feature-icon {
+  transform: translateY(-2px) scale(1.05);
+
+  background: #16817c;
+  color: #ffffff;
+
+  box-shadow: 0 8px 20px rgba(22, 129, 124, 0.24);
+}
+
+.patient-auth-feature > div:last-child {
+  display: flex;
+  flex-direction: column;
+
+  gap: 3px;
+}
+
+.patient-auth-feature strong {
+  color: #344947;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.patient-auth-feature span {
+  color: #899795;
+
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+/* =====================================================
+   LOGIN CARD
+===================================================== */
+
+.patient-login-card {
+  width: 100%;
+
+  padding: 35px;
+
+  border: 1px solid #e3ecea;
+  border-radius: 20px;
+
+  background: rgba(255, 255, 255, 0.94);
+
+  box-shadow:
+    0 30px 70px rgba(26, 62, 59, 0.1),
+    0 8px 22px rgba(26, 62, 59, 0.05);
+
+  backdrop-filter: blur(10px);
+
+  position: relative;
+
+  overflow: hidden;
+
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+
+/* soft accent bar along the top of the card */
+
+.patient-login-card::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+  right: 0;
+
+  height: 4px;
+
+  background: linear-gradient(90deg, #16817c 0%, #37b0a9 50%, #16817c 100%);
+}
+
+.patient-login-card:hover {
+  box-shadow:
+    0 34px 80px rgba(26, 62, 59, 0.13),
+    0 10px 26px rgba(26, 62, 59, 0.06);
+}
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.patient-login-header {
+  margin-bottom: 27px;
+
+  text-align: center;
+}
+
+.patient-login-icon {
+  width: 50px;
+  height: 50px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 0 auto 14px;
+
+  border-radius: 15px;
+
+  background: linear-gradient(140deg, #eaf7f5 0%, #d9f0ed 100%);
+  color: #16817c;
+
+  box-shadow:
+    0 0 0 5px #f3faf9,
+    0 8px 18px rgba(22, 129, 124, 0.14);
+}
+
+.patient-login-header > span {
+  display: block;
+
+  margin-bottom: 6px;
+
+  color: #16817c;
+
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.3px;
+}
+
+.patient-login-header h2 {
+  margin: 0;
+
+  color: #29423f;
+
+  font-size: 23px;
+  line-height: 1.25;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.patient-login-header p {
+  margin: 8px 0 0;
+
+  color: #8a9997;
+
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+/* =====================================================
+   ERROR
+===================================================== */
+
+.patient-login-error {
+  margin-bottom: 18px;
+  padding: 11px 13px 11px 15px;
+
+  border: 1px solid #ffd9d6;
+  border-left: 3px solid #d9635b;
+  border-radius: 9px;
+
+  background: #fff5f4;
+  color: #b34d47;
+
+  font-size: 11px;
+  line-height: 1.5;
+
+  animation: patientErrorIn 0.25s ease;
+}
+
+@keyframes patientErrorIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =====================================================
+   INPUT GROUP
+===================================================== */
+
+.patient-input-group {
+  margin-bottom: 18px;
+}
+
+.patient-input-group > label,
+.patient-password-label label {
+  display: block;
+
+  margin-bottom: 7px;
+
+  color: #526562;
+
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.patient-password-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.patient-password-label label {
+  margin-bottom: 7px;
+}
+
+.patient-password-label button {
+  margin-bottom: 7px;
+
+  border: 0;
+  background: transparent;
+
+  color: #16817c;
+
+  font-family: inherit;
+  font-size: 10px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: opacity 0.2s ease;
+}
+
+.patient-password-label button:hover:not(:disabled) {
+  opacity: 0.75;
+}
+
+.patient-password-label button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* =====================================================
+   INPUT
+===================================================== */
+
+.patient-input-wrapper {
+  height: 46px;
+
+  display: flex;
+  align-items: center;
+
+  padding: 0 13px;
+
+  border: 1px solid #e0e8e7;
+  border-radius: 10px;
+
+  background: #fbfcfc;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.patient-input-wrapper:hover {
+  border-color: #cbdedb;
+}
+
+.patient-input-wrapper:focus-within {
+  border-color: #77bdb8;
+
+  background: #ffffff;
+
+  box-shadow: 0 0 0 4px rgba(22, 129, 124, 0.09);
+}
+
+.patient-input-wrapper svg {
+  flex-shrink: 0;
+
+  margin-right: 9px;
+
+  color: #94a3a1;
+
+  transition: color 0.2s ease;
+}
+
+.patient-input-wrapper:focus-within svg {
+  color: #16817c;
+}
+
+.patient-input-wrapper input {
+  width: 100%;
+  height: 100%;
+
+  border: 0;
+  outline: 0;
+
+  background: transparent;
+
+  color: #304846;
+
+  font-family: inherit;
+  font-size: 12px;
+}
+
+.patient-input-wrapper input::placeholder {
+  color: #aab5b3;
+}
+
+.patient-input-wrapper input:disabled {
+  opacity: 0.6;
+}
+
+/* =====================================================
+   OPTIONS
+===================================================== */
+
+.patient-login-options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin: 3px 0 20px;
+}
+
+.patient-remember {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  color: #7c8b89;
+
+  font-size: 10px;
+
+  cursor: pointer;
+}
+
+.patient-remember input {
+  width: 14px;
+  height: 14px;
+
+  accent-color: #16817c;
+
+  cursor: pointer;
+}
+
+.patient-login-options > a {
+  color: #16817c;
+
+  font-size: 10px;
+  font-weight: 600;
+
+  text-decoration: none;
+
+  transition: opacity 0.2s ease;
+}
+
+.patient-login-options > a:hover {
+  opacity: 0.75;
+  text-decoration: underline;
+}
+
+/* =====================================================
+   LOGIN BUTTON
+===================================================== */
+
+.patient-login-button {
+  width: 100%;
+  height: 47px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  border: 0;
+  border-radius: 10px;
+
+  background: linear-gradient(120deg, #16817c 0%, #1a938d 100%);
+  color: #ffffff;
+
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+
+  cursor: pointer;
+
+  position: relative;
+  overflow: hidden;
+
+  box-shadow: 0 8px 20px rgba(22, 129, 124, 0.2);
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+/* shine sweep on hover — purely decorative */
+
+.patient-login-button::after {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: -60%;
+
+  width: 40%;
+  height: 100%;
+
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.28),
+    transparent
+  );
+
+  transform: skewX(-20deg);
+
+  transition: left 0.55s ease;
+}
+
+.patient-login-button:hover:not(:disabled)::after {
+  left: 130%;
+}
+
+.patient-login-button:hover:not(:disabled) {
+  background: linear-gradient(120deg, #126f6b 0%, #16817c 100%);
+
+  transform: translateY(-1px);
+
+  box-shadow: 0 11px 26px rgba(22, 129, 124, 0.26);
+}
+
+.patient-login-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.patient-login-button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+/* =====================================================
+   REGISTER
+===================================================== */
+
+.patient-register-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+
+  margin-top: 22px;
+
+  color: #8a9997;
+
+  font-size: 10px;
+}
+
+.patient-register-link a {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+
+  color: #16817c;
+
+  font-weight: 600;
+
+  text-decoration: none;
+
+  transition:
+    gap 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.patient-register-link a:hover {
+  gap: 6px;
+  text-decoration: underline;
+}
+
+/* =====================================================
+   ADMIN
+===================================================== */
+
+.patient-admin-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+
+  margin-top: 19px;
+  padding-top: 17px;
+
+  border-top: 1px solid #edf1f1;
+
+  color: #9aa6a4;
+
+  font-size: 9px;
+}
+
+.patient-admin-link a {
+  color: #596967;
+
+  font-weight: 600;
+
+  text-decoration: none;
+
+  transition: color 0.2s ease;
+}
+
+.patient-admin-link a:hover {
+  color: #16817c;
+}
+
+/* =====================================================
+   AUTH LOADING
+===================================================== */
+
+.patient-auth-loading {
+  min-height: 400px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+
+  color: #7c8b89;
+
+  font-size: 12px;
+}
+
+.patient-auth-spinner {
+  width: 28px;
+  height: 28px;
+
+  border: 3px solid #dcecea;
+  border-top-color: #16817c;
+
+  border-radius: 50%;
+
+  animation: patientSpin 0.7s linear infinite;
+}
+
+@keyframes patientSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 950px) {
+  .patient-auth-section {
+    grid-template-columns: minmax(0, 460px) 400px;
+
+    gap: 40px;
+  }
+
+  .patient-auth-content h1 {
+    font-size: 46px;
+  }
+}
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 850px) {
+  .patient-auth-page,
+  .patient-auth-section {
+    min-height: calc(100vh - 71px);
+  }
+}
+
+@media (max-width: 800px) {
+  .patient-auth-section {
+    grid-template-columns: 1fr;
+
+    min-height: auto;
+
+    padding: 45px 0 60px;
+  }
+
+  .patient-auth-content {
+    max-width: 650px;
+  }
+
+  .patient-auth-content h1 {
+    font-size: 42px;
+  }
+
+  .patient-login-card {
+    max-width: 480px;
+
+    margin: 0 auto;
+  }
+
+  .patient-login-card:hover {
+    transform: none;
+  }
+}
+
+@media (max-width: 520px) {
+  .patient-auth-section {
+    width: calc(100% - 28px);
+
+    padding: 35px 0 45px;
+  }
+
+  .patient-auth-content h1 {
+    margin-top: 18px;
+
+    font-size: 36px;
+    letter-spacing: -1.5px;
+  }
+
+  .patient-auth-content > p {
+    font-size: 13px;
+  }
+
+  .patient-auth-features {
+    margin-top: 27px;
+  }
+
+  .patient-auth-feature span {
+    font-size: 10px;
+  }
+
+  .patient-login-card {
+    padding: 25px 20px;
+
+    border-radius: 16px;
+  }
+
+  .patient-login-header h2 {
+    font-size: 21px;
+  }
+}

@@ -1,0 +1,1387 @@
+/* =====================================================
+   NAVBAR
+===================================================== */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+
+  background: #ffffff;
+  border-bottom: 1px solid #edf1f1;
+
+  transition:
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+/* =====================================================
+   SCROLLED NAVBAR
+===================================================== */
+
+.navbar.navbar-scrolled {
+  border-bottom-color: transparent;
+
+  box-shadow:
+    0 10px 30px rgba(21, 54, 52, 0.08),
+    0 2px 8px rgba(21, 54, 52, 0.04);
+}
+
+/* =====================================================
+   NAVBAR CONTAINER
+===================================================== */
+
+.navbar-container {
+  width: min(1180px, calc(100% - 40px));
+  min-height: 76px;
+
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 30px;
+}
+
+/* =====================================================
+   SPACER
+===================================================== */
+
+.navbar-spacer {
+  width: 100%;
+  height: 77px;
+}
+
+/* =====================================================
+   ACCESSIBILITY
+===================================================== */
+
+.navbar a:focus-visible,
+.navbar button:focus-visible {
+  outline: 2px solid #16817c;
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* =====================================================
+   LOGO
+===================================================== */
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  text-decoration: none;
+
+  flex-shrink: 0;
+}
+
+.navbar-logo-mark {
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 11px;
+
+  background: #16817c;
+  color: #ffffff;
+
+  font-size: 25px;
+  font-weight: 500;
+  line-height: 1;
+
+  box-shadow: 0 4px 12px rgba(22, 129, 124, 0.14);
+}
+
+.navbar-logo-text {
+  display: flex;
+  flex-direction: column;
+
+  line-height: 1.05;
+}
+
+.navbar-logo-text strong {
+  color: #183635;
+
+  font-size: 17px;
+  font-weight: 700;
+
+  letter-spacing: -0.3px;
+}
+
+.navbar-logo-text span {
+  margin-top: 3px;
+
+  color: #16817c;
+
+  font-size: 11px;
+  font-weight: 600;
+
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+}
+
+/* =====================================================
+   DESKTOP NAVIGATION
+===================================================== */
+
+.navbar-menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 28px;
+
+  flex: 1;
+}
+
+.navbar-link {
+  position: relative;
+
+  padding: 29px 0;
+
+  color: #667776;
+
+  font-size: 13px;
+  font-weight: 500;
+
+  text-decoration: none;
+
+  transition:
+    color 0.2s ease,
+    font-weight 0.2s ease;
+}
+
+.navbar-link::after {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  bottom: 21px;
+
+  width: 0;
+  height: 2px;
+
+  border-radius: 20px;
+
+  background: #16817c;
+
+  transform: translateX(-50%);
+
+  transition: width 0.2s ease;
+}
+
+.navbar-link:hover {
+  color: #16817c;
+}
+
+.navbar-link.active {
+  color: #16817c;
+  font-weight: 600;
+}
+
+.navbar-link.active::after {
+  width: 18px;
+}
+
+/* =====================================================
+   DASHBOARD LINK
+===================================================== */
+
+.navbar-dashboard-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.navbar-dashboard-link svg {
+  width: 15px;
+  height: 15px;
+
+  color: #16817c;
+}
+
+/* =====================================================
+   ACTIONS
+===================================================== */
+
+.navbar-actions {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  flex-shrink: 0;
+}
+
+/* =====================================================
+   LOGIN
+===================================================== */
+
+.navbar-login {
+  position: relative;
+}
+
+.navbar-login-btn {
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  padding: 0 15px;
+
+  border: 1px solid #e1e8e7;
+  border-radius: 10px;
+
+  background: #ffffff;
+  color: #36504e;
+
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.navbar-login-btn:hover,
+.navbar-login-btn.open {
+  background: #f3faf9;
+  border-color: #cce4e1;
+
+  color: #16817c;
+
+  box-shadow: 0 4px 12px rgba(22, 129, 124, 0.06);
+}
+
+.navbar-login-btn svg {
+  transition: transform 0.2s ease;
+}
+
+.navbar-login-btn svg.navbar-chevron-open {
+  transform: rotate(180deg);
+}
+
+/* =====================================================
+   PATIENT LOGIN DROPDOWN
+===================================================== */
+
+.navbar-login-dropdown {
+  position: absolute;
+
+  top: calc(100% + 12px);
+  right: 0;
+
+  width: 285px;
+
+  padding: 8px;
+
+  border: 1px solid #e6eeee;
+  border-radius: 15px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 22px 50px rgba(22, 55, 53, 0.13),
+    0 5px 15px rgba(22, 55, 53, 0.05);
+
+  opacity: 0;
+  visibility: hidden;
+
+  transform: translateY(-7px);
+
+  transition:
+    opacity 0.2s ease,
+    visibility 0.2s ease,
+    transform 0.2s ease;
+}
+
+.navbar-login-dropdown.open {
+  opacity: 1;
+  visibility: visible;
+
+  transform: translateY(0);
+}
+
+/* =====================================================
+   PATIENT ACCOUNT GROUP
+===================================================== */
+
+.navbar-account-group {
+  padding: 8px;
+}
+
+.navbar-account-heading {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 8px 7px 10px;
+
+  color: #263d3b;
+}
+
+.navbar-account-heading svg {
+  width: 17px;
+  height: 17px;
+
+  color: #16817c;
+}
+
+.navbar-account-heading strong {
+  color: #263d3b;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* =====================================================
+   PATIENT ACCOUNT ICON
+===================================================== */
+
+.navbar-account-icon {
+  width: 32px;
+  height: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 9px;
+
+  background: #eaf7f5;
+  color: #16817c;
+}
+
+/* =====================================================
+   ACCOUNT LINKS
+===================================================== */
+
+.navbar-account-group > a {
+  display: block;
+
+  padding: 10px;
+
+  margin-top: 2px;
+
+  border-radius: 9px;
+
+  color: #60706f;
+
+  font-size: 12px;
+  font-weight: 500;
+
+  text-decoration: none;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.navbar-account-group > a:hover {
+  background: #f3faf9;
+
+  color: #16817c;
+}
+
+/* =====================================================
+   LOGIN DROPDOWN DIVIDER
+===================================================== */
+
+.navbar-login-divider {
+  height: 1px;
+
+  margin: 4px 8px;
+
+  background: #edf1f1;
+}
+
+/* =====================================================
+   LOGGED-IN USER BUTTON
+===================================================== */
+
+.navbar-user-menu {
+  position: relative;
+}
+
+.navbar-user-btn {
+  height: 46px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  padding: 3px 10px 3px 4px;
+
+  border: 1px solid transparent;
+  border-radius: 13px;
+
+  background: transparent;
+
+  color: #304846;
+
+  font-family: inherit;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.navbar-user-btn:hover,
+.navbar-user-btn.open {
+  background: #f5faf9;
+
+  border-color: #e0ecea;
+
+  box-shadow: 0 4px 12px rgba(22, 55, 53, 0.04);
+}
+
+/* =====================================================
+   PROFILE INITIALS AVATAR
+===================================================== */
+
+.navbar-user-avatar {
+  width: 37px;
+  height: 37px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #16817c;
+  color: #ffffff;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  letter-spacing: 0.2px;
+
+  box-shadow:
+    0 0 0 3px #eaf7f5,
+    0 3px 8px rgba(22, 129, 124, 0.14);
+}
+
+.navbar-user-name {
+  max-width: 135px;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  color: #304846;
+
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.navbar-user-btn > svg {
+  width: 14px;
+  height: 14px;
+
+  color: #899795;
+
+  transition: transform 0.2s ease;
+}
+
+.navbar-user-btn .navbar-chevron-open {
+  transform: rotate(180deg);
+}
+
+/* =====================================================
+   USER DROPDOWN
+===================================================== */
+
+.navbar-user-dropdown {
+  position: absolute;
+
+  top: calc(100% + 11px);
+  right: 0;
+
+  width: 300px;
+
+  padding: 8px;
+
+  border: 1px solid #e4eceb;
+  border-radius: 17px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 24px 55px rgba(21, 54, 52, 0.15),
+    0 6px 16px rgba(21, 54, 52, 0.06);
+
+  opacity: 0;
+  visibility: hidden;
+
+  transform: translateY(-8px) scale(0.98);
+
+  transform-origin: top right;
+
+  transition:
+    opacity 0.2s ease,
+    visibility 0.2s ease,
+    transform 0.2s ease;
+}
+
+.navbar-user-dropdown.open {
+  opacity: 1;
+  visibility: visible;
+
+  transform: translateY(0) scale(1);
+}
+
+/* =====================================================
+   USER DROPDOWN HEADER
+===================================================== */
+
+.navbar-user-dropdown-header {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 13px 12px 14px;
+}
+
+/* =====================================================
+   DROPDOWN AVATAR
+===================================================== */
+
+.navbar-user-dropdown-avatar,
+.navbar-dropdown-avatar {
+  width: 43px;
+  height: 43px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 13px;
+
+  background: #16817c;
+  color: #ffffff;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  letter-spacing: 0.3px;
+
+  box-shadow: 0 4px 10px rgba(22, 129, 124, 0.17);
+}
+
+/* =====================================================
+   DROPDOWN USER INFORMATION
+===================================================== */
+
+.navbar-user-dropdown-header > div:last-child,
+.navbar-dropdown-user-info {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+.navbar-user-dropdown-header strong,
+.navbar-dropdown-user-info strong {
+  display: block;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  color: #243b39;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  line-height: 1.2;
+}
+
+.navbar-user-dropdown-header span,
+.navbar-dropdown-user-info span {
+  display: block;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  color: #82918f;
+
+  font-size: 11px;
+  font-weight: 400;
+
+  line-height: 1.3;
+}
+
+/* =====================================================
+   DROPDOWN DIVIDER
+===================================================== */
+
+.navbar-dropdown-divider {
+  height: 1px;
+
+  margin: 3px 7px;
+
+  background: #edf1f1;
+}
+
+/* =====================================================
+   DROPDOWN LINKS
+===================================================== */
+
+.navbar-user-dropdown > a,
+.navbar-user-dropdown .navbar-dropdown-link {
+  display: flex;
+  align-items: center;
+
+  gap: 11px;
+
+  width: 100%;
+
+  padding: 10px;
+
+  margin: 2px 0;
+
+  border-radius: 10px;
+
+  color: #4e615f;
+
+  font-size: 12px;
+  font-weight: 500;
+
+  text-decoration: none;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.15s ease;
+}
+
+.navbar-user-dropdown > a:hover,
+.navbar-user-dropdown .navbar-dropdown-link:hover {
+  background: #f5faf9;
+
+  color: #16817c;
+
+  transform: translateX(1px);
+}
+
+/* =====================================================
+   DROPDOWN ICON
+===================================================== */
+
+.navbar-dropdown-icon {
+  width: 33px;
+  height: 33px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 9px;
+
+  background: #edf8f6;
+  color: #16817c;
+}
+
+.navbar-user-dropdown > a svg,
+.navbar-user-dropdown .navbar-dropdown-link svg {
+  width: 17px;
+  height: 17px;
+
+  flex-shrink: 0;
+
+  color: #16817c;
+}
+
+/* =====================================================
+   DROPDOWN LINK TEXT
+===================================================== */
+
+.navbar-dropdown-link > span:last-child {
+  display: flex;
+  flex-direction: column;
+
+  gap: 2px;
+}
+
+.navbar-dropdown-link strong {
+  color: #344947;
+
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.navbar-dropdown-link small {
+  color: #96a3a2;
+
+  font-size: 9px;
+}
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+.navbar-logout-link {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+
+  gap: 11px;
+
+  padding: 10px;
+
+  border: 0;
+  border-radius: 10px;
+
+  background: transparent;
+
+  color: #9a5652;
+
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.navbar-logout-link:hover {
+  background: #fff4f3;
+
+  color: #c04c45;
+}
+
+.navbar-logout-link svg {
+  width: 17px;
+  height: 17px;
+
+  color: #c04c45;
+}
+
+.logout-icon {
+  background: #fff1f0;
+
+  color: #c04c45;
+}
+
+/* =====================================================
+   BOOK APPOINTMENT
+===================================================== */
+
+.navbar-appointment-btn {
+  height: 42px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  padding: 0 15px;
+
+  border-radius: 10px;
+
+  background: #16817c;
+  color: #ffffff;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  text-decoration: none;
+
+  box-shadow: 0 5px 14px rgba(22, 129, 124, 0.16);
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.navbar-appointment-btn:hover {
+  background: #126f6b;
+
+  transform: translateY(-1px);
+
+  box-shadow: 0 8px 18px rgba(22, 129, 124, 0.22);
+}
+
+.navbar-appointment-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* =====================================================
+   MOBILE TOGGLE
+===================================================== */
+
+.navbar-mobile-toggle {
+  display: none;
+
+  width: 42px;
+  height: 42px;
+
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #e3eae9;
+  border-radius: 10px;
+
+  background: #ffffff;
+  color: #36504e;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.navbar-mobile-toggle:hover {
+  background: #f5faf9;
+
+  border-color: #cfe4e1;
+
+  color: #16817c;
+}
+
+/* =====================================================
+   MOBILE MENU
+===================================================== */
+
+.navbar-mobile-menu {
+  display: none;
+}
+
+/* =====================================================
+   MOBILE USER
+===================================================== */
+
+.navbar-mobile-user {
+  margin-top: 14px;
+
+  padding: 14px;
+
+  border: 1px solid #e3eceb;
+  border-radius: 15px;
+
+  background: #ffffff;
+
+  box-shadow: 0 8px 25px rgba(21, 54, 52, 0.05);
+}
+
+.navbar-mobile-user-info {
+  display: flex;
+  align-items: center;
+
+  gap: 11px;
+
+  padding-bottom: 13px;
+}
+
+.navbar-mobile-user-avatar {
+  width: 43px;
+  height: 43px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #16817c;
+  color: #ffffff;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  box-shadow: 0 0 0 3px #eaf7f5;
+}
+
+.navbar-mobile-user-info > div:last-child {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+.navbar-mobile-user-info strong {
+  color: #304846;
+
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.navbar-mobile-user-info span {
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  color: #8a9998;
+
+  font-size: 10px;
+}
+
+/* =====================================================
+   MOBILE ACCOUNT LINKS
+===================================================== */
+
+.navbar-mobile-account-link {
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  min-height: 44px;
+
+  padding: 12px 4px;
+
+  border-top: 1px solid #edf1f1;
+
+  color: #4b5f5d;
+
+  font-size: 12px;
+  font-weight: 500;
+
+  text-decoration: none;
+
+  transition: color 0.2s ease;
+}
+
+.navbar-mobile-account-link:active {
+  background: #f5faf9;
+}
+
+.navbar-mobile-account-link:hover {
+  color: #16817c;
+}
+
+.navbar-mobile-account-link svg {
+  width: 17px;
+  height: 17px;
+
+  color: #16817c;
+}
+
+/* =====================================================
+   MOBILE LOGOUT
+===================================================== */
+
+.navbar-mobile-logout {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  min-height: 44px;
+
+  margin-top: 2px;
+
+  padding: 12px 4px;
+
+  border: 0;
+  border-top: 1px solid #edf1f1;
+
+  background: transparent;
+
+  color: #b0524d;
+
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+
+  text-align: left;
+
+  cursor: pointer;
+}
+
+.navbar-mobile-logout:active {
+  background: #fff4f3;
+}
+
+.navbar-mobile-logout svg {
+  width: 17px;
+  height: 17px;
+}
+
+/* =====================================================
+   MOBILE GUEST LOGIN
+===================================================== */
+
+.navbar-mobile-login {
+  margin-top: 14px;
+}
+
+.navbar-mobile-login-title {
+  display: block;
+
+  margin-bottom: 10px;
+
+  color: #96a3a2;
+
+  font-size: 9px;
+  font-weight: 700;
+
+  letter-spacing: 1px;
+}
+
+/* =====================================================
+   MOBILE PATIENT ACCOUNT
+===================================================== */
+
+.navbar-mobile-account {
+  margin-bottom: 10px;
+
+  padding: 13px;
+
+  border: 1px solid #e6eeed;
+  border-radius: 13px;
+
+  background: #ffffff;
+
+  box-shadow: 0 4px 14px rgba(21, 54, 52, 0.04);
+
+  transition:
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.navbar-mobile-account:hover {
+  border-color: #cfe4e1;
+
+  box-shadow: 0 8px 20px rgba(21, 54, 52, 0.06);
+}
+
+.navbar-mobile-account-title {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  margin-bottom: 8px;
+
+  color: #304846;
+
+  font-size: 12px;
+}
+
+.navbar-mobile-account-title svg {
+  width: 16px;
+  height: 16px;
+
+  color: #16817c;
+}
+
+.navbar-mobile-login-link {
+  display: flex;
+  align-items: center;
+
+  min-height: 40px;
+
+  padding: 8px 6px;
+
+  border-radius: 8px;
+
+  color: #667776;
+
+  font-size: 12px;
+
+  text-decoration: none;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.navbar-mobile-login-link:hover {
+  background: #f3faf9;
+
+  color: #16817c;
+}
+
+.navbar-mobile-login-link:active {
+  background: #eaf7f5;
+}
+
+/* =====================================================
+   MOBILE BOOK APPOINTMENT
+===================================================== */
+
+.navbar-mobile-appointment {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  width: 100%;
+
+  margin-top: 14px;
+
+  padding: 12px;
+
+  border-radius: 10px;
+
+  background: #16817c;
+  color: #ffffff;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  text-decoration: none;
+
+  box-shadow: 0 5px 14px rgba(22, 129, 124, 0.14);
+}
+
+.navbar-mobile-appointment svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 1050px) {
+  .navbar-menu {
+    gap: 20px;
+  }
+
+  .navbar-link {
+    font-size: 12px;
+  }
+
+  .navbar-user-name {
+    display: none;
+  }
+
+  .navbar-user-btn {
+    padding-right: 5px;
+  }
+}
+
+/* =====================================================
+   TABLET / MOBILE
+===================================================== */
+
+@media (max-width: 850px) {
+  .navbar-container {
+    min-height: 70px;
+  }
+
+  .navbar-spacer {
+    height: 71px;
+  }
+
+  .navbar-menu,
+  .navbar-actions {
+    display: none;
+  }
+
+  .navbar-mobile-toggle {
+    display: flex;
+  }
+
+  .navbar-mobile-menu {
+    position: absolute;
+
+    top: 100%;
+    left: 0;
+    right: 0;
+
+    display: block;
+
+    max-height: calc(100vh - 70px);
+
+    overflow-y: auto;
+    overscroll-behavior: contain;
+
+    -webkit-overflow-scrolling: touch;
+
+    padding: 15px 20px 20px;
+
+    border-top: 1px solid #edf1f1;
+
+    background: #f9fbfb;
+
+    box-shadow: 0 15px 30px rgba(22, 55, 53, 0.08);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translateY(-8px);
+
+    transition:
+      opacity 0.2s ease,
+      visibility 0.2s ease,
+      transform 0.2s ease;
+
+    scrollbar-width: thin;
+    scrollbar-color: #cfe4e1 transparent;
+  }
+
+  .navbar-mobile-menu::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  .navbar-mobile-menu::-webkit-scrollbar-thumb {
+    background: #cfe4e1;
+
+    border-radius: 10px;
+  }
+
+  .navbar-mobile-menu.open {
+    opacity: 1;
+    visibility: visible;
+
+    transform: translateY(0);
+  }
+
+  .navbar-mobile-menu nav {
+    display: flex;
+    flex-direction: column;
+
+    gap: 2px;
+  }
+
+  .navbar-mobile-link {
+    display: flex;
+    align-items: center;
+
+    min-height: 44px;
+
+    padding: 11px 5px;
+
+    color: #526563;
+
+    font-size: 13px;
+    font-weight: 500;
+
+    text-decoration: none;
+
+    border-radius: 7px;
+  }
+
+  .navbar-mobile-link:hover {
+    background: #f0f7f6;
+
+    color: #16817c;
+  }
+
+  .navbar-mobile-link:active {
+    background: #e7f3f1;
+  }
+
+  .navbar-mobile-link.active {
+    color: #16817c;
+
+    font-weight: 600;
+  }
+
+  .navbar-mobile-dashboard {
+    gap: 7px;
+  }
+
+  .navbar-mobile-dashboard svg {
+    color: #16817c;
+  }
+}
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media (max-width: 520px) {
+  .navbar-container {
+    width: calc(100% - 28px);
+  }
+
+  .navbar-logo-mark {
+    width: 35px;
+    height: 35px;
+
+    border-radius: 10px;
+
+    font-size: 23px;
+  }
+
+  .navbar-logo-text strong {
+    font-size: 15px;
+  }
+
+  .navbar-logo-text span {
+    font-size: 9px;
+
+    letter-spacing: 0.9px;
+  }
+
+  .navbar-mobile-menu {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .navbar-mobile-user {
+    padding: 13px;
+  }
+}
+
+/* =====================================================
+   VERY SMALL MOBILE
+===================================================== */
+
+@media (max-width: 360px) {
+  .navbar-logo-text {
+    display: none;
+  }
+
+  .navbar-container {
+    width: calc(100% - 22px);
+  }
+}

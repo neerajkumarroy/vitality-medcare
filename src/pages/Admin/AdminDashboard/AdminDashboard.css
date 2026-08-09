@@ -1,0 +1,2062 @@
+/* =========================================================
+   ADMIN DASHBOARD
+   Modern Vitality MedCare Admin UI
+========================================================= */
+
+.admin-dashboard-page {
+  min-height: 100vh;
+  background: #f6f8fa;
+  color: #172033;
+  font-family: "Poppins", sans-serif;
+}
+
+/* =========================================================
+   COMMON
+========================================================= */
+
+.admin-container {
+  width: min(1240px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
+button,
+input,
+select {
+  font-family: inherit;
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid rgba(8, 127, 115, 0.22);
+  outline-offset: 2px;
+}
+
+/* =========================================================
+   TOP BAR
+========================================================= */
+.admin-topbar {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+  right: 0;
+
+  width: 100%;
+
+  height: 72px;
+
+  z-index: 10000;
+
+  background: rgba(255, 255, 255, 0.96);
+
+  border-bottom: 1px solid #e7edf1;
+
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  box-shadow: 0 4px 18px rgba(25, 43, 58, 0.045);
+}
+
+.admin-topbar-inner {
+  height: 72px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* =========================================================
+   IMPORTANT:
+   Push page content below fixed navbar
+========================================================= */
+
+.admin-dashboard-page {
+  min-height: 100vh;
+
+  padding-top: 72px;
+
+  background: #f6f8fa;
+
+  color: #172033;
+
+  font-family: "Poppins", sans-serif;
+}
+
+.admin-topbar-inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Brand */
+
+.admin-brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.admin-brand-icon {
+  width: 39px;
+  height: 39px;
+  border-radius: 11px;
+  background: linear-gradient(135deg, #087f73, #0b9d8d);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 7px 18px rgba(8, 127, 115, 0.18);
+}
+
+.admin-brand > div:last-child {
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-brand strong {
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 700;
+  color: #162032;
+}
+
+.admin-brand span {
+  font-size: 11px;
+  line-height: 13px;
+  color: #8d98a6;
+}
+
+/* Right */
+
+.admin-topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+/* =========================================================
+   REFRESH BUTTON
+========================================================= */
+
+.admin-refresh-button {
+  height: 37px;
+  padding: 0 13px;
+  border: 1px solid #e0e7ec;
+  border-radius: 10px;
+  background: #fff;
+  color: #526174;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.admin-refresh-button:hover {
+  background: #f1faf8;
+  color: #087f73;
+  border-color: #a9d9d3;
+  box-shadow: 0 5px 16px rgba(8, 127, 115, 0.08);
+}
+
+.admin-refresh-button:active {
+  transform: scale(0.96);
+}
+
+.admin-refresh-button svg {
+  transition: transform 0.5s ease;
+}
+
+.admin-refresh-button:hover svg {
+  transform: rotate(180deg);
+}
+
+/* =========================================================
+   PROFILE
+========================================================= */
+
+.admin-profile-wrapper {
+  position: relative;
+}
+
+.admin-profile-button {
+  min-height: 42px;
+  border: 0;
+  background: transparent;
+  padding: 3px 5px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: background 0.2s ease;
+}
+
+.admin-profile-button:hover {
+  background: #f5f8f9;
+}
+
+.admin-profile-avatar-small {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #e6f7f4, #d8f1ed);
+  color: #087f73;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #d2eee9;
+}
+
+.admin-profile-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1px;
+}
+
+.admin-profile-text strong {
+  max-width: 145px;
+  color: #263246;
+  font-size: 12px;
+  line-height: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.admin-profile-text span {
+  color: #929daa;
+  font-size: 11px;
+  line-height: 12px;
+}
+
+.admin-profile-button > svg {
+  color: #7d8794;
+  transition: transform 0.2s ease;
+}
+
+/* =========================================================
+   PROFILE DROPDOWN
+   Modern compact menu
+========================================================= */
+
+.admin-profile-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  width: 245px;
+  padding: 7px;
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid #e4eaf0;
+  border-radius: 15px;
+  box-shadow:
+    0 18px 45px rgba(26, 42, 59, 0.13),
+    0 3px 10px rgba(26, 42, 59, 0.04);
+  z-index: 9999;
+  animation: admin-dropdown-in 0.18s ease;
+  transform-origin: top right;
+}
+
+@keyframes admin-dropdown-in {
+  from {
+    opacity: 0;
+    transform: translateY(-5px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.admin-menu-user {
+  padding: 11px 11px 12px;
+  margin-bottom: 5px;
+  border-bottom: 1px solid #edf1f4;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.admin-menu-user strong {
+  color: #263246;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.admin-menu-user span {
+  color: #9aa4b1;
+  font-size: 20px;
+  word-break: break-all;
+}
+
+/* Sign Out */
+
+.admin-profile-menu button {
+  width: 100%;
+  min-height: 38px;
+  border: 0;
+  border-radius: 9px;
+  background: transparent;
+  color: #c34e4e;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 10px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.18s ease;
+}
+
+.admin-profile-menu button:hover {
+  background: #fff2f2;
+}
+
+.admin-profile-menu button svg {
+  width: 15px;
+  height: 15px;
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.admin-dashboard-hero {
+  background: #fff;
+  border-bottom: 1px solid #e8edf1;
+}
+
+.admin-hero-inner {
+  min-height: 155px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+}
+
+.admin-eyebrow {
+  display: block;
+  margin-bottom: 7px;
+  color: #087f73;
+  font-size: 11px;
+  line-height: 12px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+}
+
+.admin-hero-inner h1 {
+  margin: 0;
+  color: #172033;
+  font-size: 32px;
+  line-height: 1.15;
+  font-weight: 500;
+  letter-spacing: -1px;
+}
+
+.admin-hero-inner h1 strong {
+  color: #087f73;
+  font-weight: 700;
+}
+
+.admin-hero-inner p {
+  max-width: 590px;
+  margin: 9px 0 0;
+  color: #7b8797;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+/* Today */
+
+.admin-today-card {
+  min-width: 142px;
+  height: 50px;
+  padding: 0 13px;
+  border: 1px solid #e3eaee;
+  border-radius: 12px;
+  background: #fafcfc;
+  color: #087f73;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+}
+
+.admin-today-card div {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.admin-today-card span {
+  color: #909aa7;
+  font-size: 8px;
+}
+
+.admin-today-card strong {
+  color: #263246;
+  font-size: 12px;
+}
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.admin-dashboard-content {
+  padding: 25px 0 48px;
+}
+
+.admin-alert {
+  min-height: 43px;
+  margin-bottom: 18px;
+  padding: 10px 13px;
+  border: 1px solid #f0d5d5;
+  border-radius: 10px;
+  background: #fff5f5;
+  color: #bb4646;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+}
+
+/* =========================================================
+   STATS
+========================================================= */
+
+.admin-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.admin-stat-card {
+  min-height: 108px;
+  padding: 16px;
+  border: 1px solid #e5ebef;
+  border-radius: 14px;
+  background: #fff;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  box-shadow: 0 4px 18px rgba(30, 50, 70, 0.025);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.admin-stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(30, 50, 70, 0.06);
+}
+
+.admin-stat-icon {
+  width: 39px;
+  height: 39px;
+  flex-shrink: 0;
+  border-radius: 11px;
+  background: #e9f7f5;
+  color: #15968a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-stat-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-stat-content span {
+  margin-bottom: 2px;
+  color: #8591a0;
+  font-size: 12px;
+}
+
+.admin-stat-content strong {
+  color: #1b293b;
+  font-size: 22px;
+  line-height: 25px;
+  font-weight: 700;
+}
+
+.admin-stat-content small {
+  margin-top: 2px;
+  color: #9ca5b0;
+  font-size: 11px;
+}
+
+/* =========================================================
+   APPOINTMENT PANEL
+========================================================= */
+
+.admin-appointment-panel {
+  overflow: visible;
+  border: 1px solid #e4eaef;
+  border-radius: 15px;
+  background: #fff;
+  box-shadow: 0 5px 22px rgba(30, 50, 70, 0.035);
+}
+
+.admin-appointment-header {
+  min-height: 88px;
+  padding: 20px 19px 16px;
+  border-bottom: 1px solid #edf1f3;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.admin-appointment-header h2 {
+  margin: 0;
+  color: #1a2839;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.admin-appointment-header p {
+  margin: 4px 0 0;
+  color: #98a2ae;
+  font-size: 12px;
+}
+
+/* Live */
+
+.admin-live-badge {
+  padding: 5px 10px;
+  border: 1px solid #d5eee9;
+  border-radius: 20px;
+  background: #eaf8f5;
+  color: #138b7e;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 8px;
+  font-weight: 600;
+}
+
+.admin-live-badge span,
+.admin-online span {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #16a085;
+  display: inline-block;
+  box-shadow: 0 0 0 3px rgba(22, 160, 133, 0.08);
+}
+
+/* =========================================================
+   TOOLBAR
+========================================================= */
+
+.admin-appointment-toolbar {
+  min-height: 62px;
+  padding: 12px 18px;
+  border-bottom: 1px solid #edf1f3;
+  background: #fafcfd;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.admin-search-box {
+  width: 380px;
+  height: 37px;
+  padding: 0 10px;
+  border: 1px solid #dfe6eb;
+  border-radius: 9px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.admin-search-box:focus-within {
+  border-color: #a7d8d2;
+  box-shadow: 0 0 0 3px rgba(8, 127, 115, 0.06);
+}
+
+.admin-search-box > svg {
+  flex-shrink: 0;
+  color: #9aa5b2;
+}
+
+.admin-search-box input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #344054;
+  font-size: 12px;
+}
+
+.admin-search-box input::placeholder {
+  color: #a6afbb;
+}
+
+.admin-search-box button {
+  border: 0;
+  background: transparent;
+  color: #929daa;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+/* Filter */
+
+.admin-status-filter {
+  position: relative;
+  width: 135px;
+}
+
+.admin-status-filter select {
+  appearance: none;
+  width: 100%;
+  height: 37px;
+  padding: 0 30px 0 11px;
+  border: 1px solid #dfe6eb;
+  border-radius: 9px;
+  outline: 0;
+  background: #fff;
+  color: #667386;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.admin-status-filter svg {
+  position: absolute;
+  top: 12px;
+  right: 10px;
+  pointer-events: none;
+  color: #8792a0;
+}
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+.admin-table {
+  width: 100%;
+  overflow: visible;
+}
+
+.admin-table-head,
+.admin-table-row {
+  display: grid;
+  grid-template-columns:
+    minmax(220px, 1.45fr)
+    minmax(135px, 0.9fr)
+    minmax(180px, 1.15fr)
+    minmax(105px, 0.7fr)
+    minmax(120px, 0.75fr);
+  align-items: center;
+}
+
+.admin-table-head {
+  min-height: 38px;
+  padding: 0 18px;
+  background: #fafcfd;
+  border-bottom: 1px solid #edf1f3;
+}
+
+.admin-table-head span {
+  color: #8e99a8;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.admin-table-row {
+  position: relative;
+  min-height: 68px;
+  padding: 0 18px;
+  border-bottom: 1px solid #edf1f3;
+  cursor: pointer;
+  transition: background 0.18s ease;
+}
+
+.admin-table-row:hover {
+  background: #fbfdfd;
+}
+
+.admin-table-row:last-child {
+  border-bottom: 0;
+}
+
+/* Patient */
+
+.admin-patient-cell {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.admin-patient-avatar {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border-radius: 9px;
+  background: #eaf7f5;
+  color: #269c90;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-patient-cell > div:last-child,
+.admin-doctor-cell {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-patient-cell strong,
+.admin-doctor-cell strong,
+.admin-date-cell strong {
+  color: #253246;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.admin-patient-cell small,
+.admin-doctor-cell small,
+.admin-date-cell small {
+  margin-top: 2px;
+  color: #9aa4b1;
+  font-size: 11px;
+  line-height: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.admin-date-cell {
+  display: flex;
+  flex-direction: column;
+}
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.admin-status {
+  width: max-content;
+  min-width: 66px;
+  padding: 5px 8px;
+  border-radius: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.admin-status > span {
+  width: 5px;
+  height: 5px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.status-pending {
+  background: #fff7e7;
+  color: #b97813;
+}
+
+.status-pending > span {
+  background: #d99729;
+}
+
+.status-confirmed {
+  background: #e9f8f3;
+  color: #17886f;
+}
+
+.status-confirmed > span {
+  background: #1caa8a;
+}
+
+.status-completed {
+  background: #eaf3ff;
+  color: #3375b9;
+}
+
+.status-completed > span {
+  background: #4284c5;
+}
+
+.status-rejected {
+  background: #fff0f0;
+  color: #c14c4c;
+}
+
+.status-rejected > span {
+  background: #cf5b5b;
+}
+
+.status-cancelled {
+  background: #f0f2f4;
+  color: #7d8792;
+}
+
+.status-cancelled > span {
+  background: #939ca5;
+}
+
+/* =========================================================
+   ACTIONS
+========================================================= */
+
+.admin-row-actions {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+  min-width: 64px;
+  z-index: 20;
+}
+
+/* IMPORTANT:
+   Only visible row buttons get the 30x30 button rule.
+   Dropdown buttons are completely isolated from this selector. */
+
+.admin-row-actions > .admin-view-button,
+.admin-row-actions > .admin-action-dropdown > .admin-more-button {
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: 1px solid #e1e7ec;
+  border-radius: 9px;
+  background: #fff;
+  color: #687587;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex: 0 0 30px;
+  transition:
+    background 0.18s ease,
+    border-color 0.18s ease,
+    color 0.18s ease,
+    transform 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.admin-row-actions > .admin-view-button:hover,
+.admin-row-actions > .admin-action-dropdown > .admin-more-button:hover {
+  transform: translateY(-1px);
+}
+
+.admin-row-actions > .admin-view-button:hover {
+  color: #087f73;
+  border-color: #9bd5ce;
+  background: #f1fbf9;
+}
+
+.admin-row-actions > .admin-action-dropdown > .admin-more-button {
+  color: #657183 !important;
+}
+
+.admin-row-actions > .admin-action-dropdown > .admin-more-button:hover,
+.admin-row-actions > .admin-action-dropdown > .admin-more-button.active {
+  color: #087f73 !important;
+  background: #f1faf8 !important;
+  border-color: #b8ddd8 !important;
+  box-shadow: 0 4px 12px rgba(8, 127, 115, 0.08);
+}
+
+.admin-row-actions button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.admin-action-dropdown {
+  position: relative;
+  display: flex;
+  align-items: center;
+  z-index: 30;
+}
+
+/* =========================================================
+   ACTION DROPDOWN
+========================================================= */
+
+.admin-action-dropdown {
+  position: relative;
+  z-index: 100;
+}
+
+.admin-action-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+
+  width: 225px;
+  padding: 7px;
+
+  background: #ffffff;
+
+  border: 1px solid #e2e8ed;
+  border-radius: 13px;
+
+  box-shadow:
+    0 20px 45px rgba(23, 37, 53, 0.15),
+    0 5px 14px rgba(23, 37, 53, 0.06);
+
+  z-index: 99999;
+
+  transform-origin: top right;
+}
+
+/* =========================================================
+   MENU HEADER
+========================================================= */
+
+.admin-action-menu-header {
+  padding: 8px 10px 9px;
+
+  border-bottom: 1px solid #edf1f3;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 10px;
+}
+
+.admin-action-menu-header span {
+  color: #8994a2;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.admin-action-menu-header small {
+  padding: 3px 7px;
+
+  border-radius: 20px;
+
+  background: #f1f5f7;
+
+  color: #667386;
+
+  font-size: 10px;
+  font-weight: 600;
+
+  text-transform: capitalize;
+}
+
+/* =========================================================
+   MENU BUTTON
+========================================================= */
+
+.admin-action-menu .admin-menu-action {
+  width: 100%;
+  min-height: 38px;
+
+  margin: 2px 0;
+  padding: 0 9px;
+
+  border: 0;
+  border-radius: 8px;
+
+  background: transparent;
+
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  color: #526174;
+
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 500;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  transition:
+    background 0.16s ease,
+    color 0.16s ease,
+    transform 0.16s ease;
+}
+
+.admin-action-menu .admin-menu-action:hover {
+  background: #f5f8f9;
+  color: #087f73;
+}
+
+.admin-action-menu .admin-menu-action:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* =========================================================
+   ICON
+========================================================= */
+
+.admin-menu-action-icon {
+  width: 28px;
+  height: 28px;
+
+  flex-shrink: 0;
+
+  border-radius: 8px;
+
+  background: #f5f7f8;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #687587;
+
+  transition:
+    background 0.16s ease,
+    color 0.16s ease;
+}
+
+.admin-menu-action > span:nth-child(2) {
+  flex: 1;
+}
+
+/* =========================================================
+   VIEW
+========================================================= */
+
+.admin-menu-view:hover {
+  background: #f0faf8 !important;
+  color: #087f73 !important;
+}
+
+.admin-menu-view:hover .admin-menu-action-icon {
+  background: #dff4f0;
+  color: #087f73;
+}
+
+.admin-menu-arrow {
+  color: #a0aab5;
+  flex-shrink: 0;
+}
+
+/* =========================================================
+   PENDING
+========================================================= */
+
+.admin-menu-pending:hover,
+.admin-menu-pending.current-status {
+  background: #fff8e9 !important;
+  color: #ad7415 !important;
+}
+
+.admin-menu-pending:hover .admin-menu-action-icon,
+.admin-menu-pending.current-status .admin-menu-action-icon {
+  background: #ffefc9;
+  color: #c28720;
+}
+
+/* =========================================================
+   CONFIRMED
+========================================================= */
+
+.admin-menu-confirm:hover,
+.admin-menu-confirm.current-status {
+  background: #edf9f5 !important;
+  color: #168b76 !important;
+}
+
+.admin-menu-confirm:hover .admin-menu-action-icon,
+.admin-menu-confirm.current-status .admin-menu-action-icon {
+  background: #d9f2e9;
+  color: #168b76;
+}
+
+/* =========================================================
+   CANCELLED
+========================================================= */
+
+.admin-menu-cancel:hover,
+.admin-menu-cancel.current-status {
+  background: #f5f6f7 !important;
+  color: #747e89 !important;
+}
+
+.admin-menu-cancel:hover .admin-menu-action-icon,
+.admin-menu-cancel.current-status .admin-menu-action-icon {
+  background: #e7eaed;
+  color: #747e89;
+}
+
+/* =========================================================
+   COMPLETED
+========================================================= */
+
+.admin-menu-complete:hover,
+.admin-menu-complete.current-status {
+  background: #edf5ff !important;
+  color: #3375b9 !important;
+}
+
+.admin-menu-complete:hover .admin-menu-action-icon,
+.admin-menu-complete.current-status .admin-menu-action-icon {
+  background: #dcecff;
+  color: #3375b9;
+}
+
+/* =========================================================
+   CURRENT STATUS CHECK
+========================================================= */
+
+.admin-current-check {
+  flex-shrink: 0;
+  color: #087f73;
+}
+
+/* =========================================================
+   DIVIDER
+========================================================= */
+
+.admin-menu-divider {
+  height: 1px;
+
+  margin: 5px 4px;
+
+  background: #edf1f3;
+}
+
+/* =========================================================
+   DELETE
+========================================================= */
+
+.admin-menu-delete {
+  color: #c14c4c !important;
+}
+
+.admin-menu-delete:hover {
+  background: #fff1f1 !important;
+  color: #c14c4c !important;
+}
+
+.admin-menu-delete .admin-menu-action-icon {
+  background: #fff4f4;
+  color: #c14c4c;
+}
+
+.admin-menu-delete:hover .admin-menu-action-icon {
+  background: #ffe2e2;
+  color: #c14c4c;
+}
+
+/* Status-only state for completed/rejected/cancelled appointments. */
+
+.admin-menu-status-note {
+  min-height: 48px;
+  margin: 2px 0;
+  padding: 7px 8px;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 9px;
+}
+
+.admin-menu-status-note > span:last-child {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.admin-menu-status-note strong {
+  font-size: 9px;
+  line-height: 12px;
+}
+
+.admin-menu-status-note small {
+  color: #929daa;
+  font-size: 7.5px;
+  line-height: 11px;
+}
+
+.admin-menu-status-icon {
+  width: 29px;
+  height: 29px;
+  flex: 0 0 29px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-menu-status-success {
+  background: #edf8f5;
+  color: #168d78;
+}
+
+.admin-menu-status-success .admin-menu-status-icon {
+  background: #dff4ec;
+}
+
+.admin-menu-status-rejected {
+  background: #fff3f3;
+  color: #c14c4c;
+}
+
+.admin-menu-status-rejected .admin-menu-status-icon {
+  background: #ffe5e5;
+}
+
+.admin-menu-status-cancelled {
+  background: #f4f5f6;
+  color: #737d89;
+}
+
+.admin-menu-status-cancelled .admin-menu-status-icon {
+  background: #e8eaed;
+}
+
+/* =========================================================
+   ACTION SPINNER
+========================================================= */
+
+.admin-action-spinner {
+  color: #087f73;
+  animation: admin-spin 0.8s linear infinite;
+}
+
+@keyframes admin-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =========================================================
+   TABLE STATES
+========================================================= */
+
+.admin-table-loading,
+.admin-no-appointments {
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #98a2ae;
+}
+
+.admin-table-loading svg {
+  color: #087f73;
+  animation: admin-spin 0.8s linear infinite;
+}
+
+.admin-table-loading span {
+  margin-top: 9px;
+  font-size: 12px;
+}
+
+.admin-no-appointments svg {
+  color: #a0aab5;
+}
+
+.admin-no-appointments h3 {
+  margin: 10px 0 3px;
+  color: #39475a;
+  font-size: 13px;
+}
+
+.admin-no-appointments p {
+  margin: 0;
+  color: #98a2ae;
+  font-size: 9px;
+}
+
+.admin-appointment-error {
+  margin: 10px 18px;
+  padding: 9px 11px;
+  border: 1px solid #f0d4d4;
+  border-radius: 8px;
+  background: #fff4f4;
+  color: #bc4a4a;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 9px;
+}
+
+/* =========================================================
+   TABLE FOOTER
+========================================================= */
+
+.admin-table-footer {
+  min-height: 44px;
+  padding: 0 18px;
+  border-top: 1px solid #edf1f3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  color: #8e99a7;
+  font-size: 11px;
+  background: rgba(255, 255, 255, 0.98);
+  position: sticky;
+  bottom: 0;
+  z-index: 60;
+  box-shadow: 0 -6px 18px rgba(24, 43, 58, 0.035);
+  backdrop-filter: blur(10px);
+}
+
+.admin-table-footer strong {
+  color: #087f73;
+  font-size: 12px;
+}
+
+/* =========================================================
+   BOTTOM CARDS
+========================================================= */
+
+.admin-bottom-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.admin-clinic-status,
+.admin-quick-card {
+  min-height: 108px;
+  padding: 17px;
+  border: 1px solid #e5ebef;
+  border-radius: 13px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.admin-clinic-status-icon,
+.admin-quick-icon {
+  width: 41px;
+  height: 41px;
+  flex-shrink: 0;
+  border-radius: 11px;
+  background: #eaf8f5;
+  color: #148e81;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-clinic-status > div:nth-child(2),
+.admin-quick-card > div:nth-child(2) {
+  flex: 1;
+  min-width: 0;
+}
+
+.admin-clinic-status span:first-child,
+.admin-quick-card span {
+  color: #087f73;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+}
+
+.admin-clinic-status h3,
+.admin-quick-card h3 {
+  margin: 3px 0 2px;
+  color: #253246;
+  font-size: 13px;
+}
+
+.admin-clinic-status p,
+.admin-quick-card p {
+  margin: 0;
+  color: #929dab;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.admin-online {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #168d7d;
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+/* =========================================================
+   APPOINTMENT MODAL
+========================================================= */
+
+.admin-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  padding: 20px;
+  background: rgba(17, 29, 42, 0.48);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-appointment-modal {
+  width: min(720px, 100%);
+  max-height: calc(100vh - 40px);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 17px;
+  background: #fff;
+  box-shadow: 0 30px 90px rgba(20, 35, 50, 0.25);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Modal Header */
+
+.admin-modal-header {
+  min-height: 78px;
+  padding: 16px 20px;
+  border-bottom: 1px solid #e9edf1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.admin-modal-header > div:first-child {
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-modal-header span {
+  color: #087f73;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.admin-modal-header h2 {
+  margin: 3px 0 0;
+  color: #1c293a;
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.admin-modal-close {
+  width: 33px;
+  height: 33px;
+  border: 1px solid #e3e8ed;
+  border-radius: 9px;
+  background: #fff;
+  color: #667385;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.18s ease;
+}
+
+.admin-modal-close:hover {
+  color: #c14b4b;
+  border-color: #edcccc;
+  background: #fff6f6;
+}
+
+/* Modal Status */
+
+.admin-modal-status-row {
+  min-height: 47px;
+  padding: 0 20px;
+  border-bottom: 1px solid #edf0f3;
+  background: #fafcfd;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.admin-modal-id {
+  max-width: 300px;
+  color: #9aa4b0;
+  font-size: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Body */
+
+.admin-modal-body {
+  padding: 20px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #cfd8de transparent;
+}
+
+.admin-detail-section {
+  padding-bottom: 18px;
+  margin-bottom: 18px;
+  border-bottom: 1px solid #edf0f3;
+}
+
+.admin-detail-section:last-child {
+  padding-bottom: 0;
+  margin-bottom: 0;
+  border-bottom: 0;
+}
+
+.admin-detail-title {
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #087f73;
+}
+
+.admin-detail-title h3 {
+  margin: 0;
+  color: #273548;
+  font-size: 11px;
+}
+
+.admin-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 11px;
+}
+
+.admin-detail-grid > div {
+  padding: 10px 11px;
+  border: 1px solid #edf1f4;
+  border-radius: 9px;
+  background: #f8fafb;
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-detail-grid span {
+  margin-bottom: 3px;
+  color: #96a0ad;
+  font-size: 8px;
+}
+
+.admin-detail-grid strong {
+  color: #2c394c;
+  font-size: 12px;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.admin-notes {
+  padding: 12px;
+  border: 1px solid #e8edf1;
+  border-radius: 9px;
+  background: #fafcfd;
+  color: #687588;
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+/* Modal Footer */
+
+.admin-modal-footer {
+  min-height: 66px;
+  padding: 12px 20px;
+  border-top: 1px solid #e9edf1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.admin-modal-footer button {
+  min-height: 35px;
+  padding: 0 13px;
+  border: 1px solid #e1e7ec;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 9px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.18s ease;
+}
+
+.admin-modal-footer button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.admin-modal-secondary {
+  background: #fff;
+  color: #657183;
+}
+
+.admin-modal-secondary:hover {
+  background: #f6f8fa;
+}
+
+.admin-modal-reject {
+  background: #fff5f5;
+  color: #c05252;
+  border-color: #f0d0d0 !important;
+}
+
+.admin-modal-reject:hover {
+  background: #ffecec;
+}
+
+.admin-modal-confirm {
+  background: #087f73;
+  color: #fff;
+  border-color: #087f73 !important;
+  box-shadow: 0 5px 13px rgba(8, 127, 115, 0.15);
+}
+
+.admin-modal-confirm:hover {
+  background: #066e64;
+  border-color: #066e64 !important;
+}
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+.admin-loading-screen {
+  min-height: 100vh;
+  background: #f6f8fa;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-loading-spinner {
+  width: 48px;
+  height: 48px;
+  border-radius: 13px;
+  background: #e8f7f5;
+  color: #087f73;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-loading-spinner svg {
+  animation: admin-spin 0.8s linear infinite;
+}
+
+.admin-loading-screen h3 {
+  margin: 12px 0 3px;
+  color: #29374a;
+  font-size: 15px;
+}
+
+.admin-loading-screen p {
+  margin: 0;
+  color: #929ca9;
+  font-size: 12px;
+}
+
+/* =========================================================
+   SCROLLBAR
+========================================================= */
+
+.admin-dashboard-page ::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+.admin-dashboard-page ::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.admin-dashboard-page ::-webkit-scrollbar-thumb {
+  background: #d2dbe1;
+  border-radius: 20px;
+}
+
+.admin-dashboard-page ::-webkit-scrollbar-thumb:hover {
+  background: #b9c5cd;
+}
+
+/* =========================================================
+   RESPONSIVE - 1100px
+========================================================= */
+
+@media (max-width: 1100px) {
+  .admin-table-head,
+  .admin-table-row {
+    grid-template-columns:
+      minmax(190px, 1.35fr)
+      minmax(120px, 0.85fr)
+      minmax(155px, 1fr)
+      minmax(95px, 0.65fr)
+      minmax(110px, 0.7fr);
+  }
+
+  .admin-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* =========================================================
+   RESPONSIVE - 850px
+========================================================= */
+
+@media (max-width: 850px) {
+  .admin-container {
+    width: min(100% - 28px, 720px);
+  }
+
+  .admin-topbar {
+    height: auto;
+    min-height: 70px;
+  }
+
+  .admin-topbar-inner {
+    padding: 9px 0;
+  }
+
+  .admin-profile-text {
+    display: none;
+  }
+
+  .admin-hero-inner {
+    min-height: auto;
+    padding: 30px 0;
+  }
+
+  .admin-hero-inner h1 {
+    font-size: 28px;
+  }
+
+  .admin-today-card {
+    display: none;
+  }
+
+  .admin-appointment-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .admin-search-box {
+    width: 100%;
+  }
+
+  .admin-status-filter {
+    width: 100%;
+  }
+
+  .admin-table {
+    overflow-x: auto;
+    overflow-y: visible;
+  }
+
+  .admin-table-head,
+  .admin-table-row {
+    width: 850px;
+  }
+
+  .admin-bottom-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /*
+     Keep action dropdown visible outside horizontal table
+     as much as possible.
+  */
+  .admin-action-menu {
+    right: 0;
+  }
+}
+
+/* =========================================================
+   RESPONSIVE - 600px
+========================================================= */
+
+@media (max-width: 600px) {
+  .admin-container {
+    width: calc(100% - 20px);
+  }
+
+  .admin-topbar-right {
+    gap: 5px;
+  }
+
+  .admin-refresh-button {
+    width: 36px;
+    padding: 0;
+  }
+
+  .admin-refresh-button span {
+    display: none;
+  }
+
+  .admin-brand strong {
+    font-size: 12px;
+  }
+
+  .admin-brand span {
+    font-size: 11px;
+  }
+
+  .admin-stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-dashboard-content {
+    padding-top: 18px;
+  }
+
+  .admin-appointment-header {
+    padding: 16px;
+  }
+
+  .admin-appointment-header h2 {
+    font-size: 15px;
+  }
+
+  .admin-live-badge {
+    display: none;
+  }
+
+  .admin-table-head,
+  .admin-table-row {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .admin-table-footer {
+    padding: 9px 12px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .admin-modal-overlay {
+    padding: 10px;
+  }
+
+  .admin-appointment-modal {
+    max-height: calc(100vh - 20px);
+    border-radius: 14px;
+  }
+
+  .admin-modal-header {
+    padding: 14px 15px;
+  }
+
+  .admin-modal-body {
+    padding: 15px;
+  }
+
+  .admin-modal-status-row {
+    padding: 0 15px;
+  }
+
+  .admin-detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-modal-footer {
+    padding: 10px 15px;
+    flex-wrap: wrap;
+  }
+
+  .admin-modal-footer button {
+    flex: 1;
+  }
+
+  .admin-profile-menu {
+    width: 220px;
+    right: -2px;
+  }
+}
+
+/* =========================================================
+   RESPONSIVE - 420px
+========================================================= */
+
+@media (max-width: 420px) {
+  .admin-brand-icon {
+    width: 34px;
+    height: 34px;
+  }
+
+  .admin-brand strong {
+    font-size: 11px;
+  }
+
+  .admin-refresh-button {
+    height: 34px;
+  }
+
+  .admin-profile-avatar-small {
+    width: 32px;
+    height: 32px;
+  }
+
+  .admin-hero-inner h1 {
+    font-size: 25px;
+  }
+
+  .admin-hero-inner p {
+    font-size: 9px;
+  }
+
+  .admin-stat-card {
+    min-height: 95px;
+  }
+
+  .admin-action-menu {
+    width: 190px;
+  }
+}
+
+/* =========================================================
+   FINAL ACTION + FOOTER SAFETY
+========================================================= */
+
+.admin-appointment-panel,
+.admin-table,
+.admin-table-row {
+  overflow: visible;
+}
+
+.admin-table {
+  position: relative;
+}
+
+.admin-table-row:has(.admin-action-menu) {
+  z-index: 100;
+}
+
+.admin-fixed-status-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 34px;
+  z-index: 9000;
+  pointer-events: none;
+  background: rgba(255, 255, 255, 0.94);
+  border-top: 1px solid rgba(226, 233, 238, 0.9);
+  box-shadow: 0 -8px 24px rgba(25, 43, 58, 0.04);
+  backdrop-filter: blur(12px);
+}
+
+.admin-fixed-status-inner {
+  width: min(1240px, calc(100% - 40px));
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #8c97a4;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.admin-fixed-status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #16a085;
+  box-shadow: 0 0 0 3px rgba(22, 160, 133, 0.09);
+}
+
+.admin-fixed-status-separator {
+  width: 1px;
+  height: 10px;
+  margin: 0 2px;
+  background: #dfe5e9;
+}
+
+.admin-dashboard-content {
+  padding-bottom: 72px;
+}
+
+@media (max-width: 850px) {
+  .admin-table {
+    overflow-x: auto;
+    overflow-y: visible;
+  }
+
+  .admin-table-row:has(.admin-action-menu) {
+    z-index: 100;
+  }
+
+  .admin-action-menu {
+    width: 225px;
+  }
+
+  .admin-fixed-status-inner {
+    width: calc(100% - 28px);
+  }
+}
+
+@media (max-width: 600px) {
+  .admin-action-menu {
+    width: 220px;
+    max-width: calc(100vw - 30px);
+  }
+
+  .admin-table-footer {
+    min-height: 48px;
+    padding: 9px 12px;
+    gap: 5px;
+  }
+
+  .admin-fixed-status-bar {
+    height: 32px;
+  }
+
+  .admin-fixed-status-inner {
+    width: calc(100% - 20px);
+    font-size: 7px;
+  }
+}

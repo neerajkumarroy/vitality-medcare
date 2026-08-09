@@ -1,0 +1,30 @@
+@media (max-width: 992px) {
+  :root {
+    --fs-hero: 46px;
+    --fs-page-title: 38px;
+    --fs-section-title: 30px;
+    --section-padding: 70px;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --fs-hero: 38px;
+    --fs-page-title: 34px;
+    --fs-section-title: 28px;
+    --fs-body: 15px;
+    --section-padding: 60px;
+  }
+
+  .container {
+    width: min(100% - 30px, var(--container-width));
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --fs-hero: 32px;
+    --fs-page-title: 30px;
+    --fs-section-title: 25px;
+  }
+}
