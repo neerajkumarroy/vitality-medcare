@@ -73,7 +73,7 @@ const PatientDashboard = () => {
         */
 
         const response = await fetch(
-          "http://localhost:5000/api/appointments/my",
+          "https://vitality-backend-2mr4.onrender.com/api/appointments/my",
           {
             method: "GET",
             headers: {

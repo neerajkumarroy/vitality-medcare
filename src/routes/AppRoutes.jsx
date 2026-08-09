@@ -191,7 +191,7 @@ const AppRoutes = () => {
         {/* =================================================
             ADMIN AUTH
 
-            No normal Navbar/Footer
+            No normal Navbar/Footer /and morden footer
         ================================================= */}
 
         <Route path="/admin/login" element={<AdminLogin />} />

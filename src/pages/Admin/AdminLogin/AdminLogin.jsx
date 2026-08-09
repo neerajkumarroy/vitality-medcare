@@ -13,7 +13,7 @@ import {
 
 import "./AdminLogin.css";
 
-const API_BASE_URL = "http://localhost:5000/api";
+const API_BASE_URL = "https://vitality-backend-2mr4.onrender.com";
 
 const AdminLogin = () => {
   const navigate = useNavigate();
