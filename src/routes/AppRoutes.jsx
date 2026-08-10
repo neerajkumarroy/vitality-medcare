@@ -33,6 +33,7 @@ import PatientDashboard from "../pages/Patient/PatientDashboard/PatientDashboard
 // =====================================================
 
 import AdminLogin from "../pages/Admin/AdminLogin/AdminLogin";
+import AdminRegister from "../pages/Admin/AdminRegister/AdminRegister";
 
 import AdminDashboard from "../pages/Admin/AdminDashboard/AdminDashboard";
 
@@ -195,6 +196,7 @@ const AppRoutes = () => {
         ================================================= */}
 
         <Route path="/admin/login" element={<AdminLogin />} />
+        <Route path="/admin/register" element={<AdminRegister />} />
 
         {/* =================================================
             ADMIN DASHBOARD

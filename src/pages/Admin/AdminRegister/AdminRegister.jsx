@@ -10,6 +10,7 @@ import {
   Eye,
   EyeOff,
   CheckCircle2,
+  CircleAlert,
 } from "lucide-react";
 
 import "./AdminRegister.css";
@@ -17,12 +18,24 @@ import "./AdminRegister.css";
 const AdminRegister = () => {
   const navigate = useNavigate();
 
+  // =====================================================
+  // PASSWORD VISIBILITY
+  // =====================================================
+
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  // =====================================================
+  // UI STATES
+  // =====================================================
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+
+  // =====================================================
+  // FORM DATA
+  // =====================================================
 
   const [formData, setFormData] = useState({
     name: "",
@@ -43,9 +56,13 @@ const AdminRegister = () => {
       [name]: value,
     }));
 
-    // Remove previous error while typing
+    // Clear messages while user is typing
     if (error) {
       setError("");
+    }
+
+    if (success) {
+      setSuccess("");
     }
   };
 
@@ -59,19 +76,44 @@ const AdminRegister = () => {
     setError("");
     setSuccess("");
 
-    // Password validation
-    if (formData.password !== formData.confirmPassword) {
-      setError("Passwords do not match.");
+    // ===================================================
+    // BASIC VALIDATION
+    // ===================================================
+
+    const name = formData.name.trim();
+    const email = formData.email.trim().toLowerCase();
+    const password = formData.password;
+    const confirmPassword = formData.confirmPassword;
+
+    if (!name || !email || !password || !confirmPassword) {
+      setError("Please fill all required fields.");
       return;
     }
 
-    if (formData.password.length < 6) {
+    // ===================================================
+    // PASSWORD LENGTH
+    // ===================================================
+
+    if (password.length < 6) {
       setError("Password must be at least 6 characters long.");
+      return;
+    }
+
+    // ===================================================
+    // PASSWORD MATCH
+    // ===================================================
+
+    if (password !== confirmPassword) {
+      setError("Passwords do not match.");
       return;
     }
 
     try {
       setLoading(true);
+
+      // =================================================
+      // ADMIN REGISTER API
+      // =================================================
 
       const response = await fetch(
         "https://vitality-backend-2mr4.onrender.com/api/auth/admin/register",
@@ -83,24 +125,40 @@ const AdminRegister = () => {
           },
 
           body: JSON.stringify({
-            name: formData.name.trim(),
-            email: formData.email.trim(),
-            password: formData.password,
+            name,
+            email,
+            password,
+            confirmPassword,
           }),
         },
       );
+
+      // =================================================
+      // READ RESPONSE
+      // =================================================
 
       const data = await response.json();
 
       console.log("Admin Registration Response:", data);
 
+      // =================================================
+      // API ERROR
+      // =================================================
+
       if (!response.ok) {
-        throw new Error(data.message || "Admin registration failed.");
+        throw new Error(data.message || "Unable to create admin account.");
       }
+
+      // =================================================
+      // SUCCESS
+      // =================================================
 
       setSuccess(data.message || "Admin account created successfully.");
 
-      // Clear form
+      // =================================================
+      // CLEAR FORM
+      // =================================================
+
       setFormData({
         name: "",
         email: "",
@@ -108,41 +166,62 @@ const AdminRegister = () => {
         confirmPassword: "",
       });
 
-      // Redirect to Admin Login
+      // Reset password visibility
+      setShowPassword(false);
+      setShowConfirmPassword(false);
+
+      // =================================================
+      // REDIRECT TO ADMIN LOGIN
+      // =================================================
+
       setTimeout(() => {
         navigate("/admin/login");
       }, 1200);
     } catch (error) {
       console.error("Admin Registration Error:", error);
 
-      setError(error.message || "Something went wrong. Please try again.");
+      setError(
+        error.message || "Something went wrong while creating admin account.",
+      );
     } finally {
       setLoading(false);
     }
   };
 
+  // =====================================================
+  // JSX
+  // =====================================================
+
   return (
     <main className="admin-register-page">
-      {/* =====================================================
+      {/* =================================================
           LEFT CONTENT
-      ===================================================== */}
+      ================================================= */}
 
       <section className="admin-register-info">
         <div className="admin-register-info-inner">
+          {/* BADGE */}
+
           <div className="admin-register-badge">
             <ShieldCheck size={16} />
-            ADMINISTRATION
+            <span>ADMINISTRATION</span>
           </div>
+
+          {/* HEADING */}
 
           <h1>
             Create Your
             <span>Admin Account.</span>
           </h1>
 
+          {/* DESCRIPTION */}
+
           <p>
             Create a secure administrator account to manage appointments,
             doctors, patients, services, and clinic operations.
           </p>
+
+          {/* FEATURES */}
 
           <div className="admin-register-features">
             <div>
@@ -163,18 +242,28 @@ const AdminRegister = () => {
         </div>
       </section>
 
-      {/* =====================================================
+      {/* =================================================
           REGISTER FORM
-      ===================================================== */}
+      ================================================= */}
 
       <section className="admin-register-form-section">
         <motion.div
           className="admin-register-card"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          initial={{
+            opacity: 0,
+            y: 20,
+          }}
+          animate={{
+            opacity: 1,
+            y: 0,
+          }}
+          transition={{
+            duration: 0.5,
+          }}
         >
-          {/* HEADER */}
+          {/* =================================================
+              HEADER
+          ================================================= */}
 
           <div className="admin-register-heading">
             <div className="admin-register-icon">
@@ -188,27 +277,58 @@ const AdminRegister = () => {
             <p>Enter your details to create an administrator account.</p>
           </div>
 
-          {/* SUCCESS MESSAGE */}
+          {/* =================================================
+              SUCCESS MESSAGE
+          ================================================= */}
 
           {success && (
-            <div className="admin-register-success">
+            <motion.div
+              className="admin-register-success"
+              initial={{
+                opacity: 0,
+                y: -5,
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+              }}
+            >
               <CheckCircle2 size={17} />
+
               <span>{success}</span>
-            </div>
+            </motion.div>
           )}
 
-          {/* ERROR MESSAGE */}
+          {/* =================================================
+              ERROR MESSAGE
+          ================================================= */}
 
           {error && (
-            <div className="admin-register-error">
+            <motion.div
+              className="admin-register-error"
+              initial={{
+                opacity: 0,
+                y: -5,
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+              }}
+            >
+              <CircleAlert size={17} />
+
               <span>{error}</span>
-            </div>
+            </motion.div>
           )}
 
-          {/* FORM */}
+          {/* =================================================
+              FORM
+          ================================================= */}
 
           <form onSubmit={handleSubmit}>
-            {/* NAME */}
+            {/* =================================================
+                NAME
+            ================================================= */}
 
             <div className="admin-register-input-group">
               <label htmlFor="name">Full Name</label>
@@ -224,12 +344,15 @@ const AdminRegister = () => {
                   value={formData.name}
                   onChange={handleChange}
                   autoComplete="name"
+                  disabled={loading}
                   required
                 />
               </div>
             </div>
 
-            {/* EMAIL */}
+            {/* =================================================
+                EMAIL
+            ================================================= */}
 
             <div className="admin-register-input-group">
               <label htmlFor="email">Email Address</label>
@@ -245,12 +368,15 @@ const AdminRegister = () => {
                   value={formData.email}
                   onChange={handleChange}
                   autoComplete="email"
+                  disabled={loading}
                   required
                 />
               </div>
             </div>
 
-            {/* PASSWORD */}
+            {/* =================================================
+                PASSWORD
+            ================================================= */}
 
             <div className="admin-register-input-group">
               <label htmlFor="password">Password</label>
@@ -266,22 +392,30 @@ const AdminRegister = () => {
                   value={formData.password}
                   onChange={handleChange}
                   autoComplete="new-password"
-                  required
+                  disabled={loading}
                   minLength={6}
+                  required
                 />
 
                 <button
                   type="button"
                   className="admin-password-toggle"
-                  onClick={() => setShowPassword(!showPassword)}
+                  onClick={() => setShowPassword((prev) => !prev)}
                   aria-label={showPassword ? "Hide password" : "Show password"}
+                  disabled={loading}
                 >
                   {showPassword ? <EyeOff size={17} /> : <Eye size={17} />}
                 </button>
               </div>
+
+              <small className="admin-register-hint">
+                Password must be at least 6 characters.
+              </small>
             </div>
 
-            {/* CONFIRM PASSWORD */}
+            {/* =================================================
+                CONFIRM PASSWORD
+            ================================================= */}
 
             <div className="admin-register-input-group">
               <label htmlFor="confirmPassword">Confirm Password</label>
@@ -297,17 +431,19 @@ const AdminRegister = () => {
                   value={formData.confirmPassword}
                   onChange={handleChange}
                   autoComplete="new-password"
-                  required
+                  disabled={loading}
                   minLength={6}
+                  required
                 />
 
                 <button
                   type="button"
                   className="admin-password-toggle"
-                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                  onClick={() => setShowConfirmPassword((prev) => !prev)}
                   aria-label={
                     showConfirmPassword ? "Hide password" : "Show password"
                   }
+                  disabled={loading}
                 >
                   {showConfirmPassword ? (
                     <EyeOff size={17} />
@@ -318,20 +454,32 @@ const AdminRegister = () => {
               </div>
             </div>
 
-            {/* SUBMIT */}
+            {/* =================================================
+                SUBMIT BUTTON
+            ================================================= */}
 
             <button
               type="submit"
               className="admin-register-submit"
               disabled={loading}
             >
-              {loading ? "Creating Account..." : "Create Admin Account"}
-
-              {!loading && <ArrowRight size={17} />}
+              {loading ? (
+                <>
+                  <span className="admin-register-spinner" />
+                  Creating Account...
+                </>
+              ) : (
+                <>
+                  Create Admin Account
+                  <ArrowRight size={17} />
+                </>
+              )}
             </button>
           </form>
 
-          {/* LOGIN */}
+          {/* =================================================
+              LOGIN
+          ================================================= */}
 
           <div className="admin-register-login">
             <span>Already have an admin account?</span>
@@ -339,7 +487,9 @@ const AdminRegister = () => {
             <Link to="/admin/login">Admin Login</Link>
           </div>
 
-          {/* SECURITY */}
+          {/* =================================================
+              SECURITY
+          ================================================= */}
 
           <div className="admin-register-security">
             <ShieldCheck size={14} />
