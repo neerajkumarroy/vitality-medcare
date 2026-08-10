@@ -34,7 +34,7 @@ import { useNavigate } from "react-router-dom";
 
 import "./AdminDashboard.css";
 
-const API_BASE_URL = "https://vitality-backend-2mr4.onrender.com";
+const API_BASE_URL = "https://vitality-backend-2mr4.onrender.com/api";
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
