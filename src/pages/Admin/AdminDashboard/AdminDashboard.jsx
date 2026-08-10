@@ -600,16 +600,15 @@ const AdminDashboard = () => {
 
   const apiStats = dashboardData?.stats || {};
 
-  const totalAppointments = apiStats.totalAppointments ?? appointments.length;
+  const totalAppointments = appointments.length;
 
-  const pendingAppointments =
-    apiStats.pendingAppointments ??
-    appointments.filter((item) => item.status?.toLowerCase() === "pending")
-      .length;
+  const pendingAppointments = appointments.filter(
+    (item) => item.status?.toLowerCase() === "pending",
+  ).length;
 
-  const totalPatients = apiStats.totalPatients ?? 0;
+  const totalPatients = dashboardData?.stats?.totalPatients ?? 0;
 
-  const totalDoctors = apiStats.totalDoctors ?? 0;
+  const totalDoctors = dashboardData?.stats?.totalDoctors ?? 0;
 
   /* =====================================================
      TODAY
